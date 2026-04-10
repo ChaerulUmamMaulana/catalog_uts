@@ -41,6 +41,7 @@ dependencies:
   dio: ^5.9.2
   flutter_secure_storage: ^10.0.0
   equatable: ^2.0.8
+  email_validator: ^3.0.0
 
 dev_dependencies:
   flutter_test:

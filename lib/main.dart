@@ -12,7 +12,7 @@ options: DefaultFirebaseOptions.currentPlatform,
 runApp( 
 MultiProvider( 
 providers: [ 
-ChangeNotifierProvider(create: (_) => AuthProvider()), 
+// ChangeNotifierProvider(create: (_) => AuthProvider()), 
 ], 
 child: const MyApp(), 
 ), 

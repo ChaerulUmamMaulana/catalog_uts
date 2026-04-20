@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:mycatalog/core/constants/api_constants.dart';
 import 'package:mycatalog/core/constants/app_colors.dart';
 import 'package:mycatalog/core/services/secure_storage.dart';
 

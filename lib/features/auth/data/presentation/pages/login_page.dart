@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart' hide AuthProvider;
+import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart' show AuthStatus;
 import 'package:mycatalog/features/auth/data/presentation/widgets/auth_header.dart';
 import 'package:provider/provider.dart';
 

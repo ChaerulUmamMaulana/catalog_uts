@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:mycatalog/core/services/secure_storage.dart';
 
 import '../../../../../core/constants/api_constants.dart';
@@ -26,6 +27,8 @@ enum AuthStatus {
   User?     _firebaseUser;
   String?   _backendToken;   // Token dari backend (bukan Firebase token)
   String?   _errorMessage;
+  String? _tempEmail;
+String? _tempPassword;
 
 
   // ─── Getters ─────────────────────────────────────────────
@@ -38,9 +41,13 @@ enum AuthStatus {
 // ─── Register dengan Email & Password ────────────────────
 
 
-}
 
-Future<bool> register({name, email, password}) async {
+
+Future<bool> register({
+  required String name,
+  required String email,
+  required String password,
+}) async {
   _setLoading(); // status = loading, notifyListeners()
  
   // STEP 1: Buat akun di Firebase
@@ -188,23 +195,9 @@ Future<bool> _verifyTokenToBackend() async {
     return false;
   }
 
-// ─── Kirim ulang email verifikasi ────────────────────────
-  Future<void> resendVerificationEmail() async {
-    await _firebaseUser?.sendEmailVerification();
-  }
 
 
-  // ─── Cek status verifikasi email (polling) ────────────────
-  Future<bool> checkEmailVerified() async {
-    await _firebaseUser?.reload(); // Refresh data user dari Firebase
-    _firebaseUser = _auth.currentUser;
 
-
-    if (_firebaseUser?.emailVerified ?? false) {
-      return await _verifyTokenToBackend();
-    }
-    return false;
-  }
 
 // ─── Logout ───────────────────────────────────────────────
   Future<void> logout() async {
@@ -217,8 +210,36 @@ Future<bool> _verifyTokenToBackend() async {
     notifyListeners();
   }
 
-
-''
-
+  void _setLoading() {
+  _status = AuthStatus.loading;
+  _errorMessage = null;
+  notifyListeners();
 }
+
+void _setError(String message) {
+  _status = AuthStatus.error;
+  _errorMessage = message;
+  notifyListeners();
+}
+
+String _mapFirebaseError(String code) {
+  switch (code) {
+    case 'user-not-found':
+      return 'User tidak ditemukan';
+    case 'wrong-password':
+      return 'Password salah';
+    case 'email-already-in-use':
+      return 'Email sudah digunakan';
+    case 'invalid-email':
+      return 'Format email tidak valid';
+    default:
+      return 'Terjadi kesalahan: $code';
+  }
+}
+
+  }
+  
+
+
+
 

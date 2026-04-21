@@ -1,5 +1,8 @@
 // Representasi kondisi autentikasi
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mycatalog/core/services/secure_storage.dart';
 
 enum AuthStatus {
   initial,          // Belum ada action
@@ -8,7 +11,7 @@ enum AuthStatus {
   unauthenticated,  // Belum login / logout
   emailNotVerified, // Login tapi email belum dikonfirmasi
   error,            // Ada error
-
+}
 
   class AuthProvider extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;

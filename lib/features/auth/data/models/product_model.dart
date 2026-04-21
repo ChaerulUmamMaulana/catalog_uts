@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 class ProductModel extends Equatable { 
   final int    id; 
   final String name; 
@@ -23,3 +24,4 @@ class ProductModel extends Equatable {
  
   @override 
   List<Object?> get props => [id, name, price]; 
+}

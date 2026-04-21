@@ -1,12 +1,18 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart' show AuthStatus;
+import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart';
 import 'package:mycatalog/features/auth/data/presentation/widgets/auth_header.dart';
+import 'package:mycatalog/features/auth/data/presentation/widgets/custom_button.dart';
+import 'package:mycatalog/features/auth/data/presentation/widgets/divider_with_text.dart';
+import 'package:mycatalog/features/auth/data/presentation/widgets/google_sign_in_button.dart';
+import 'package:mycatalog/features/auth/data/presentation/widgets/loading_overlay.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../core/routes/app_router.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/google_sign_in_button.dart';
+
+
 
 class LoginPage extends StatefulWidget { 
   const LoginPage({super.key}); 
@@ -54,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
   void _handleLoginResult(bool ok, AuthProvider auth) { 
     if (ok) { 
       Navigator.pushReplacementNamed(context, AppRouter.dashboard); 
-    } else if (auth.stat us == AuthStatus.emailNotVerified) { 
+    } else if (auth.status == AuthStatus.emailNotVerified) { 
       Navigator.pushReplacementNamed(context, AppRouter.verifyEmail); 
     } else { 
       ScaffoldMessenger.of(context).showSnackBar( 

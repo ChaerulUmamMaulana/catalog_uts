@@ -4,7 +4,7 @@ import 'package:mycatalog/features/auth/data/presentation/providers/product_prov
 import 'package:provider/provider.dart';
 
 import '../../../../../core/routes/app_router.dart';
-import '../providers/auth_provider.dart';
+
 
 class DashboardPage extends StatefulWidget { 
   const DashboardPage({super.key}); 
@@ -43,7 +43,7 @@ class _DashboardPageState extends State<DashboardPage> {
           IconButton( 
             icon: const Icon(Icons.logout), 
             onPressed: () async { 
-              await auth.logo ut(); 
+              await auth.logout(); 
               if (!mounted) return; 
               Navigator.pushReplacementNamed(context, AppRouter.login); 
             }, 

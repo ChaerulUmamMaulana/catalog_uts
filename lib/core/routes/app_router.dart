@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mycatalog/features/auth/data/presentation/pages/dashboard_page.dart';
+import 'package:mycatalog/features/auth/data/presentation/pages/login_page.dart';
+import 'package:mycatalog/features/auth/data/presentation/pages/register_page.dart';
+import 'package:mycatalog/features/auth/data/presentation/pages/verify_email_page.dart';
 
 class AppRouter { 
   static const String splash      = '/'; 

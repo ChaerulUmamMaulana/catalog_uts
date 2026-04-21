@@ -1,4 +1,5 @@
-import 'package:firebase_core/firebase_core.dart'; 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart'; 
 import 'firebase_options.dart'; 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,12 +13,14 @@ options: DefaultFirebaseOptions.currentPlatform,
 runApp( 
 MultiProvider( 
 providers: [ 
-// ChangeNotifierProvider(create: (_) => AuthProvider()), 
+ChangeNotifierProvider(create: (_) => AuthProvider()), 
 ], 
 child: const MyApp(), 
 ), 
 ); 
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,4 +29,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Placeholder();
   }
+
+    
 }

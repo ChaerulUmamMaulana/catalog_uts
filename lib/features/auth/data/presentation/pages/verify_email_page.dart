@@ -15,7 +15,7 @@ class VerifyEmailPage extends StatefulWidget {
   State<VerifyEmailPage> createState() => _VerifyEmailPageState(); 
 } 
  
-abstract class _VerifyEmailPageState extends State<VerifyEmailPage> { 
+class _VerifyEmailPageState extends State<VerifyEmailPage> { 
   Timer? _timer; 
   bool   _resendCooldown = false; 
   int    _countdown = 60; 
@@ -57,8 +57,7 @@ abstract class _VerifyEmailPageState extends State<VerifyEmailPage> {
         setState(() => _resendCooldown = false); 
       } 
     
-}; 
- 
+
     ScaffoldMessenger.of(context).showSnackBar( 
       const SnackBar(content: Text('Email verifikasi sudah dikirim ulang')), 
     ); 
@@ -134,5 +133,6 @@ Navigator.pushReplacementNamed(context, AppRouter.login);
 ), 
 ), 
 ), 
-); 
+);
 } 
+}

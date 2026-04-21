@@ -1,15 +1,15 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart' show StatefulWidget, FormState, GlobalKey, TextEditingController, Navigator, ScaffoldMessenger, SnackBar, Text, Colors, State, BuildContext, Scaffold, SafeArea, SingleChildScrollView, EdgeInsets, Form, Column, SizedBox, Icons, Icon, TextInputType, IconButton, MainAxisAlignment, GestureDetector;
+import 'package:flutter/material.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart';
 import 'package:mycatalog/features/auth/data/presentation/widgets/auth_header.dart';
 import 'package:mycatalog/features/auth/data/presentation/widgets/custom_button.dart';
 import 'package:mycatalog/features/auth/data/presentation/widgets/custom_text_field.dart';
 import 'package:mycatalog/features/auth/data/presentation/widgets/loading_overlay.dart';
 import 'package:provider/provider.dart';
-
+import 'package:email_validator/email_validator.dart';
 import '../../../../../core/routes/app_router.dart';
-import '../providers/auth_provider.dart';
+
 
 class RegisterPage extends StatefulWidget { 
   const RegisterPage({super.key}); 
@@ -65,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
       message: 'Mendaftarkan akun...', 
       child: Scaffold( 
         body: SafeArea( 
-          child: SingleChildScrollView( padding: const all(24), 
+          child: SingleChildScrollView( padding: EdgeInsets.all(24), 
             child: Form( 
               key: _formKey, 
               child: Column( 

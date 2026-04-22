@@ -1,5 +1,5 @@
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:flutter/material.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart';
 import 'package:mycatalog/features/auth/data/presentation/widgets/auth_header.dart';
@@ -10,7 +10,6 @@ import 'package:mycatalog/features/auth/data/presentation/widgets/loading_overla
 import 'package:provider/provider.dart';
 import '../../../../../core/routes/app_router.dart';
 import '../widgets/custom_text_field.dart';
-import '../widgets/google_sign_in_button.dart';
 
 
 

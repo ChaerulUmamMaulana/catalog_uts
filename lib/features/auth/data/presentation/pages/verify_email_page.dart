@@ -7,7 +7,6 @@ import 'package:mycatalog/features/auth/data/presentation/widgets/custom_button.
 import 'package:provider/provider.dart';
 
 import '../../../../../core/routes/app_router.dart';
-import '../providers/auth_provider.dart';
 
 class VerifyEmailPage extends StatefulWidget { 
   const VerifyEmailPage({super.key}); 

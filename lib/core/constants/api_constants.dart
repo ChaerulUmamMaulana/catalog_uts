@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const String baseUrl = 'http://192.168.0.28:8080/v1';
+  static const String baseUrl = 'http://10.247.95.136:8080/v1';
  
   // Auth endpoints
   static const String verifyToken = '/auth/verify-token';
@@ -7,7 +7,7 @@ class ApiConstants {
   // Product endpoints
   static const String products = '/products';
  
-  // Timeout
+  // Timeoutq
   static const int connectTimeout = 15000;
   static const int receiveTimeout = 15000;
 }

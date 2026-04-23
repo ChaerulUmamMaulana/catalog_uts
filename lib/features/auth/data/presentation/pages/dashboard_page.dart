@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/product_provider.dart';
+import 'package:mycatalog/features/carts/presentation/widgets/add_button_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../core/routes/app_router.dart';
@@ -143,6 +144,8 @@ class _DashboardPageState extends State<DashboardPage> {
                           ],
                         ),
                       ),
+
+                      AddButtonWidget(product: p)
                     ],
                   ),
                 );

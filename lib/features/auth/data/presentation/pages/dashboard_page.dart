@@ -49,6 +49,10 @@ class _DashboardPageState extends State<DashboardPage> {
               Navigator.pushReplacementNamed(context, AppRouter.login);
             },
           ),
+          IconButton(
+icon: const Icon(Icons.shopping_cart),
+onPressed: () => Navigator.pushNamed(context, AppRouter.cart),
+),
         ],
       ),
       body: switch (product.status) {
@@ -84,7 +88,7 @@ class _DashboardPageState extends State<DashboardPage> {
               padding: const EdgeInsets.all(16),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 0.75,
+                childAspectRatio: 0.55,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
               ),
@@ -101,7 +105,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       ClipRRect(
                         borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(12)),
-                        child: Image.network(
+                        child: Image.asset(
                           p.imageUrl,
                           height: 120,
                           width: double.infinity,
@@ -141,11 +145,10 @@ class _DashboardPageState extends State<DashboardPage> {
                                   style: const TextStyle(
                                       fontSize: 11, color: Color(0xFF1565C0))),
                             ),
+                      AddButtonWidget(product: p)
                           ],
                         ),
                       ),
-
-                      AddButtonWidget(product: p)
                     ],
                   ),
                 );

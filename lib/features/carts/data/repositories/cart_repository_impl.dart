@@ -13,6 +13,6 @@ class CartRepositoryImpl implements CartRepository {
   
   @override
   void removeAllItems() {
-    
+     _items.clear();
   }
 }

@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mycatalog/core/routes/app_router.dart';
+import 'package:mycatalog/core/theme/app_theme.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart';
+import 'package:mycatalog/features/carts/presentation/providers/cart_provider.dart';
+import 'features/carts/data/repositories/cart_repository_impl.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +20,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider(repository: CartRepositoryImpl())),
       ], 
       child: const MyApp(),
     ),
@@ -26,13 +30,23 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'MyCatalog',
-      initialRoute: AppRouter.splash,
-      routes: AppRouter.routes,
+    return MultiProvider(
+      providers: [
+ ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
+      ],
+      child: MaterialApp(
+        title:                  'My App',
+        debugShowCheckedModeBanner: false,
+        theme:                  AppTheme.light,
+        initialRoute:           AppRouter.splash,
+        routes:                 AppRouter.routes,
+      ),
     );
   }
 }
+
+

@@ -7,6 +7,7 @@ import 'package:mycatalog/features/auth/data/presentation/pages/register_page.da
 import 'package:mycatalog/features/auth/data/presentation/pages/verify_email_page.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/product_provider.dart';
+import 'package:mycatalog/features/carts/presentation/pages/cart.page.dart';
 import 'package:provider/provider.dart';
 
 class AppRouter { 
@@ -14,7 +15,8 @@ class AppRouter {
   static const String login       = '/login'; 
   static const String register    = '/register'; 
   static const String verifyEmail = '/verify-email'; 
-  static const String dashboard   = '/dashboard'; 
+  static const String dashboard   = '/dashboard';
+  static const String cart        = '/cart'; 
  
   static Map<String, WidgetBuilder> get routes => { 
     splash:      (_) => const SplashPage(), 
@@ -22,6 +24,7 @@ class AppRouter {
     register:    (_) => const RegisterPage(), 
     verifyEmail: (_) => const VerifyEmailPage(), 
     dashboard:   (_) => const AuthGuard(child: DashboardPage()), 
+    cart:        (_) => const AuthGuard(child: MyCart()),
   }; 
 }
 

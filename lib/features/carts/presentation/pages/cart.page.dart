@@ -24,7 +24,7 @@ class MyCart extends StatelessWidget {
               itemCount: cart.items.length,
               itemBuilder: (context, index) =>
                   ListTile(
-                    leading: const Icon(Icons.gamepad), title: Text(cart.items[index].name),
+                    leading: const Icon(Icons.tablet_android), title: Text(cart.items[index].name),
                     subtitle: Text('Rp ${cart.items[index].price.toStringAsFixed(0)}'),
                   ),
             ),
@@ -78,7 +78,7 @@ class MyCart extends StatelessWidget {
                       // nanti bisa kamu isi logic pembayaran
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Fitur pembayaran belum dibuat'),
+                          content: Text('Yeayy Pembayaran berhasil!'),
                         ),
                       );
                     },

@@ -112,7 +112,7 @@ onPressed: () => Navigator.pushNamed(context, AppRouter.cart),
                           fit: BoxFit.cover,
                           errorBuilder: (_, __, ___) => Container(
                             height: 120,
-                            color: Colors.grey.shade200,
+                            color: Colors.blueAccent  .shade200,
                             child:
                                 const Icon(Icons.image_not_supported, size: 40),
                           ),

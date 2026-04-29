@@ -87,33 +87,30 @@ class AppTheme {
       ),
 
       switchTheme: SwitchThemeData(
-  // Warna bulatan switch
-  thumbColor: WidgetStateProperty.resolveWith((states) {
-    if (states.contains(WidgetState.selected)) {
-      return AppColors.primary; // saat ON → biru
-    }
-    return Colors.grey.shade400; // saat OFF → abu
-  }),
-  // Warna rel switch
-  trackColor: WidgetStateProperty.resolveWith((states) {
-    if (states.contains(WidgetState.selected)) {
-      return AppColors.primary.withValues(alpha: 0.4); // ON → biru transparan
-    }
-    return Colors.grey.shade300; // OFF → abu
-  }),
-),
+        // Warna bulatan switch
+        thumbColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.primary; // saat ON → biru
+          }
+          return Colors.grey.shade400; // saat OFF → abu
+        }),
+        // Warna rel switch
+        trackColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColors.primary
+                .withValues(alpha: 0.4); // ON → biru transparan
+          }
+          return Colors.grey.shade300; // OFF → abu
+        }),
+      ),
 
-textTheme: const TextTheme(
-  bodyLarge:   TextStyle(color: AppColors.darkTextPrimary),
-  bodyMedium:  TextStyle(color: AppColors.darkTextPrimary),
-  bodySmall:   TextStyle(color: AppColors.darkTextSecondary),
-  titleLarge:  TextStyle(color: AppColors.darkTextPrimary),
-  titleMedium: TextStyle(color: AppColors.darkTextPrimary),
-),
-
-
-
-
-    );//
+      textTheme: const TextTheme(
+        bodyLarge: TextStyle(color: AppColors.darkTextPrimary),
+        bodyMedium: TextStyle(color: AppColors.darkTextPrimary),
+        bodySmall: TextStyle(color: AppColors.darkTextSecondary),
+        titleLarge: TextStyle(color: AppColors.darkTextPrimary),
+        titleMedium: TextStyle(color: AppColors.darkTextPrimary),
+      ),
+    ); //
   }
 }

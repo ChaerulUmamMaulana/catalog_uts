@@ -19,11 +19,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();    // ← beritahu semua widget yang listen
   }
 }
- enum ThemeMode {
-  system,  // ikuti pengaturan sistem HP
-  light,   // paksa terang
-  dark,    // paksa gelap
-}
+
 
 
 

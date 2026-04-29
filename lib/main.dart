@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:mycatalog/core/providers/theme_provider.dart';
 import 'package:mycatalog/core/routes/app_router.dart';
 import 'package:mycatalog/core/theme/app_theme.dart';
 import 'package:mycatalog/features/auth/data/presentation/providers/auth_provider.dart';
@@ -18,10 +19,12 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
-        ChangeNotifierProvider(create: (_) => CartProvider(repository: CartRepositoryImpl())),
-      ], 
+        ChangeNotifierProvider(
+            create: (_) => CartProvider(repository: CartRepositoryImpl())),
+      ],
       child: const MyApp(),
     ),
   );
@@ -30,32 +33,23 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MultiProvider(
       providers: [
- ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
       child: MaterialApp(
-        title:                  'My App',
-        // 2. Daftarkan KEDUA tema
-      theme:     AppTheme.light,       // ← dipakai saat ThemeMode.light
-      darkTheme: AppTheme.dark,        // ← dipakai saat ThemeMode.dark
+        title: 'My App',
+        theme: AppTheme.light, // ← dipakai saat ThemeMode.light
+        darkTheme: AppTheme.dark, // ← dipakai saat ThemeMode.dark
+        themeMode: themeProvider.themeMode,
 
-
-      // 3. Tentukan mode aktif dari provider
-      themeMode: themeProvider.themeMode,
-      //         ↑ berubah saat toggle() dipanggil → seluruh app ikut
-
-
-      initialRoute: AppRouter.splash,
-      routes: AppRouter.routes,
-
+        initialRoute: AppRouter.splash,
+        routes: AppRouter.routes,
       ),
     );
   }
 }
-
-

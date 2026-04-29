@@ -40,10 +40,19 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title:                  'My App',
-        debugShowCheckedModeBanner: false,
-        theme:                  AppTheme.light,
-        initialRoute:           AppRouter.splash,
-        routes:                 AppRouter.routes,
+        // 2. Daftarkan KEDUA tema
+      theme:     AppTheme.light,       // ← dipakai saat ThemeMode.light
+      darkTheme: AppTheme.dark,        // ← dipakai saat ThemeMode.dark
+
+
+      // 3. Tentukan mode aktif dari provider
+      themeMode: themeProvider.themeMode,
+      //         ↑ berubah saat toggle() dipanggil → seluruh app ikut
+
+
+      initialRoute: AppRouter.splash,
+      routes: AppRouter.routes,
+
       ),
     );
   }

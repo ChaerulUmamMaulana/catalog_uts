@@ -94,7 +94,7 @@ class AuthProvider extends ChangeNotifier {
 
   Future<bool> _verifyTokenToBackend() async {
     // Ambil Firebase ID Token (expired tiap 1 jam)
-    final firebaseToken = await _firebaseUser?.getIdToken();
+    final firebaseToken = await _firebaseUser?.getIdToken(true);
 
     // POST ke backend — DioClient interceptor sudah handle logging
     final response = await DioClient.instance.post(
@@ -128,10 +128,10 @@ class AuthProvider extends ChangeNotifier {
       _firebaseUser = credential.user;
 
       // Cek apakah email sudah diverifikasi
-      if (!(_firebaseUser?.emailVerified ?? false)) {
+      if (!(_firebaseUser?.emailVerified ?? true)) {
         _status = AuthStatus.emailNotVerified;
         notifyListeners();
-        return false;
+        return true;
       }
 
       // Email terverifikasi → dapatkan token Firebase → kirim ke backend

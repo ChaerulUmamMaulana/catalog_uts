@@ -46,4 +46,38 @@ class AppTheme {
       ),
     );
   }
+
+  // ── DARK ─────────────────────────────────────────────────
+static ThemeData get dark {
+  return ThemeData(
+    brightness: Brightness.dark,                     // ← gelap
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      primary: AppColors.accent,                     // ← biru MUDA (lebih kontras di gelap)
+      surface: AppColors.darkSurface, seedColor: AppColors.darkBackground,                // ← abu gelap
+    ),
+    scaffoldBackgroundColor: AppColors.darkBackground, // ← hitam gelap
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.darkSurface,        // ← abu gelap (bukan hitam polos)
+      foregroundColor: AppColors.darkTextPrimary,    // ← putih keabu
+    ),
+    // Light: background input = abu sangat muda
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,               
+      fillColor: Colors.grey.shade50,
+   
+      border: OutlineInputBorder(
+  borderSide: BorderSide(color: Colors.grey.shade300)
+)
+
+
+      // Dark: background input = abu gelap
+      fillColor: AppColors.darkSurfaceCard,
+      border: BorderSide(color: AppColors.darkBorder),
+      focusedBorder: BorderSide(color: AppColors.accent, width: 2),
+      hintStyle: TextStyle(color: AppColors.darkTextHint),
+
+  );
+}
+
 }

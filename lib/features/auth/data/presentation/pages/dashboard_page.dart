@@ -179,3 +179,68 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
+
+class AccountDialog extends StatelessWidget {
+  const AccountDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
+
+    final isDark = themeProvider.isDark;
+
+    return AlertDialog(
+      title: const Text("Akun"),
+
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+
+          Row(
+            children: [
+
+              Icon(
+                isDark
+                    ? Icons.dark_mode
+                    : Icons.light_mode,
+
+                color: isDark
+                    ? Colors.amber
+                    : Colors.orange,
+              ),
+
+              const SizedBox(width: 10),
+
+              Text(
+                isDark
+                    ? "Dark Mode"
+                    : "Light Mode",
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 20),
+
+          SwitchListTile(
+            title: const Text("Aktifkan Dark Mode"),
+
+            value: isDark,
+
+            onChanged: (value) {
+              context.read<ThemeProvider>().toggle();
+            },
+          ),
+        ],
+      ),
+
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text("Tutup"),
+        ),
+      ],
+    );
+  }
+}

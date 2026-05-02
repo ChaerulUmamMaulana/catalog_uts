@@ -3,8 +3,8 @@ import 'package:mycatalog/features/auth/data/presentation/providers/auth_provide
 import 'package:mycatalog/features/auth/data/presentation/providers/product_provider.dart';
 import 'package:mycatalog/features/carts/presentation/widgets/add_button_widget.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../core/routes/app_router.dart';
+import 'package:mycatalog/core/providers/theme_provider.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -16,7 +16,6 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   void initState() {
     super.initState();
-    // Fetch produk begitu halaman dibuka
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ProductProvider>().fetchProducts();
     });
@@ -41,7 +40,18 @@ class _DashboardPageState extends State<DashboardPage> {
           ],
         ),
         actions: [
-          IconButton(
+
+           IconButton(
+    icon: const Icon(Icons.person),
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (_) => const AccountDialog(),
+      );
+    },
+  ),
+
+        IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () async {
               await auth.logout();
@@ -50,9 +60,19 @@ class _DashboardPageState extends State<DashboardPage> {
             },
           ),
           IconButton(
-icon: const Icon(Icons.shopping_cart),
-onPressed: () => Navigator.pushNamed(context, AppRouter.cart),
-),
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () => Navigator.pushNamed(context, AppRouter.cart),
+          ),
+
+           IconButton(
+    icon: const Icon(Icons.shopping_cart),
+    onPressed: () {
+      Navigator.pushNamed(
+        context,
+        AppRouter.cart,
+      );
+    },
+  ),
         ],
       ),
       body: switch (product.status) {
@@ -112,7 +132,7 @@ onPressed: () => Navigator.pushNamed(context, AppRouter.cart),
                           fit: BoxFit.cover,
                           errorBuilder: (_, __, ___) => Container(
                             height: 120,
-                            color: Colors.blueAccent  .shade200,
+                            color: Colors.blueAccent.shade200,
                             child:
                                 const Icon(Icons.image_not_supported, size: 40),
                           ),
@@ -145,7 +165,7 @@ onPressed: () => Navigator.pushNamed(context, AppRouter.cart),
                                   style: const TextStyle(
                                       fontSize: 11, color: Color(0xFF1565C0))),
                             ),
-                      AddButtonWidget(product: p)
+                            AddButtonWidget(product: p)
                           ],
                         ),
                       ),
